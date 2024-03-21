@@ -5,8 +5,8 @@
 ## variables are used by this binary as well at the update script
 ## ###############
 BATTERY_CLI_FORK="govolsgo"
-BATTERY_CLI_VERSION_NUMBER="v1.1.6"
-BATTERY_CLI_VERSION_PRERELEASE_NAME=""
+BATTERY_CLI_VERSION_NUMBER="v1.1.7"
+BATTERY_CLI_VERSION_PRERELEASE_NAME="dev"
 BATTERY_CLI_VERSION="$BATTERY_CLI_VERSION_NUMBER-$BATTERY_CLI_VERSION_PRERELEASE_NAME"
 
 if ! echo $BATTERY_CLI_FORK | tr [':upper:'] [':lower:'] | grep -q "actuallymentor"; then
@@ -392,8 +392,16 @@ fi
 # Discharging on/off controller
 if [[ "$action" == "discharge" ]]; then
 
-	# Start charging
+	# check if discharge is actually necessary
 	battery_percentage=$(get_battery_percentage)
+
+	if [[ "$battery_percentage" -le "$setting" ]]
+		log "Not triggering discharge as current charge level $battery_percentage% is at or below specified limit of $setting%"
+
+		exit 0
+	fi
+
+	# start discharging
 	log "Discharging to $setting% from $battery_percentage%"
 	enable_discharging
 
@@ -409,6 +417,7 @@ if [[ "$action" == "discharge" ]]; then
 	disable_discharging
 	log "Discharging completed at $battery_percentage%"
 
+	exit 0
 fi
 
 # Maintain at level
