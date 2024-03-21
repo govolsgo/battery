@@ -395,7 +395,7 @@ if [[ "$action" == "discharge" ]]; then
 	# check if discharge is actually necessary
 	battery_percentage=$(get_battery_percentage)
 
-	if [[ "$battery_percentage" -le "$setting" ]]
+	if [[ "$battery_percentage" -le "$setting" ]]; then
 		log "Not triggering discharge as current charge level $battery_percentage% is at or below specified limit of $setting%"
 
 		exit 0
