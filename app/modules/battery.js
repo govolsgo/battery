@@ -165,7 +165,7 @@ const initialize_battery = async () => {
             if( !online ) return alert( `Battery needs an internet connection to download the latest version, please connect to the internet and open the app again.` )
             if( !is_installed ) await alert( `Welcome to the Battery limiting tool. The app needs to install/update some components, so it will ask for your password. This should only be needed once.` )
             if( !visudo_complete ) await alert( `Battery needs to apply a backwards incompatible update, to do this it will ask for your password. This should not happen frequently.` )
-            const result = await exec_sudo_async( `curl -s https://raw.githubusercontent.com/actuallymentor/battery/main/setup.sh | bash -s -- $USER` )
+            const result = await exec_sudo_async( `curl -s https://raw.githubusercontent.com/govolsgo/battery/main/setup.sh | bash -s -- $USER` )
             log( `Install result success `, result )
             await alert( `Battery background components installed successfully. You can find the battery limiter icon in the top right of your menu bar.` )
         }
