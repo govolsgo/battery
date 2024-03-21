@@ -9,8 +9,8 @@ BATTERY_CLI_VERSION_NUMBER="v1.1.6"
 BATTERY_CLI_VERSION_PRERELEASE_NAME=""
 BATTERY_CLI_VERSION="$BATTERY_CLI_VERSION_NUMBER-$BATTERY_CLI_VERSION_PRERELEASE_NAME"
 
-if [[ echo $BATTERY_CLI_FORK | tr [':upper:'] [':lower:'] == "actuallymentor" ]]
-	$BATTERY_CLI_VERSION = "$BATTERY_CLI_VERSION ($BATTERY_CLI_FORK fork)"
+if ! echo $BATTERY_CLI_FORK | tr [':upper:'] [':lower:'] | grep -q "actuallymentor"; then
+	BATTERY_CLI_VERSION="$BATTERY_CLI_VERSION ($BATTERY_CLI_FORK fork)"
 fi
 
 # Path fixes for unexpected environments
