@@ -11,7 +11,7 @@ This is an app for Apple Silicon Macs. It will not work on Intel macs. Do you ha
 ### Installation
 
 - Option 1: install through brew with `brew install battery`
-- Option 2: [You can download the latest app dmg version here](https://github.com/actuallymentor/battery/releases/).
+- Option 2: [You can download the latest app dmg version here](https://github.com/govolsgo/battery/releases/).
 - Option 3: command-line only installation (see section below)
 
 The first time you open the app, it will ask for your administator password so it can install the needed components. Please note that the app:
@@ -23,7 +23,7 @@ The first time you open the app, it will ask for your administator password so i
 - Keeps the limit engaged even after closing the tray app
 - Also automatically installs the `battery` command line tool. If you want a custom charging percentage, the CLI is the only way to do that.
 
-Do you have questions, comments, or feature requests? [Open an issue here](https://github.com/actuallymentor/battery/issues) or [Tweet at me](https://twitter.com/actuallymentor).
+Do you have questions, comments, or feature requests? [Open an issue here](https://github.com/govolsgo/battery/issues) or [Tweet at me](https://twitter.com/cartercrews).
 
 ---
 
@@ -40,7 +40,7 @@ The CLI is used for managing the battery charging status for Apple Silicon Macbo
 One-line installation:
 
 ```bash
-curl -s https://raw.githubusercontent.com/actuallymentor/battery/main/setup.sh | bash
+curl -s https://raw.githubusercontent.com/govolsgo/battery/main/setup.sh | bash
 ```
 
 This will:
@@ -121,7 +121,7 @@ I would actually have preferred using Al Dente, but decided to create a command-
 
 ### "It's not working"
 
-If you used one of the earlier versions of the `battery` utility, you may run into [path/permission issues](https://github.com/actuallymentor/battery/issues/8). This is not your fault but mine. To fix it:
+If you used one of the earlier versions of the `battery` utility from actuallymentor's upstream repo (https://github.com/actuallymentor/battery), you may run into [path/permission issues](https://github.com/actuallymentor/battery/issues/8). This is not your fault. To fix it:
 
 ```
 sudo rm -rf ~/.battery
@@ -129,7 +129,7 @@ binfolder=/usr/local/bin
 sudo rm -v "$binfolder/smc" "$binfolder/battery"
 ```
 
-Then reopen the app and things should work. If not, [open an issue](https://github.com/actuallymentor/battery/issues/new/choose) and I'll try to help you fix it.
+Then reopen the app and things should work. If not, [open an issue](https://github.com/govolsgo/battery/issues/new/choose) and I'll try to help you fix it.
 
 ### A note to Little Snitch users
 
@@ -152,8 +152,8 @@ This app is a similar alternative to Optimized Charging, giving the user control
 
 ### How do I support this project?
 
-Do you know how to code? Open a pull-request for a feature with the label [help wanted (PR welcome)](https://github.com/actuallymentor/battery/labels/help%20wanted%20%28PR%20welcome%29).
+Do you know how to code? Open a pull-request for a feature with the label [help wanted (PR welcome)](https://github.com/govolsgo/battery/labels/help%20wanted%20%28PR%20welcome%29).
 
-Do you have an awesome feature idea? [Add a feature request](https://github.com/actuallymentor/battery/issues/new/choose)
+Do you have an awesome feature idea? [Add a feature request](https://github.com/govolsgo/battery/issues/new/choose)
 
-Do you just want to keep me motivated to update the app? [Tweet at me](https://twitter.com/actuallymentor)
+Do you just want to keep me motivated to update the app? [Tweet at me](https://twitter.com/cartercrews)

@@ -4,7 +4,7 @@
   "description": "A battery charge limiter for Apple silicon Mac devices",
   "main": "main.js",
   "build": {
-    "appId": "co.palokaj.battery",
+    "appId": "com.cartercrews.battery",
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "dmg": {
       "writeUpdateInfo": false
@@ -32,13 +32,13 @@
     "prepare": "cd .. && husky install ./app/.husky",
     "lint": "eslint --fix modules main.js"
   },
-  "repository": "https://github.com/actuallymentor/battery",
+  "repository": "https://github.com/govolsgo/battery",
   "keywords": [
     "battery",
     "m1",
     "mac"
   ],
-  "author": "actuallymentor",
+  "author": "govolsgo",
   "license": "MIT",
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",

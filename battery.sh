@@ -4,7 +4,14 @@
 ## Update management
 ## variables are used by this binary as well at the update script
 ## ###############
-BATTERY_CLI_VERSION="v1.1.6"
+BATTERY_CLI_FORK="govolsgo"
+BATTERY_CLI_VERSION_NUMBER="v1.1.6"
+BATTERY_CLI_VERSION_PRERELEASE_NAME=""
+BATTERY_CLI_VERSION="$BATTERY_CLI_VERSION_NUMBER-$BATTERY_CLI_VERSION_PRERELEASE_NAME"
+
+if [[ echo $BATTERY_CLI_FORK | tr [':upper:'] [':lower:'] == "actuallymentor" ]]
+	$BATTERY_CLI_VERSION = "$BATTERY_CLI_VERSION ($BATTERY_CLI_FORK fork)"
+fi
 
 # Path fixes for unexpected environments
 PATH=/bin:/usr/bin:/usr/local/bin:/usr/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew
@@ -90,7 +97,7 @@ Usage:
 
 # Visudo instructions
 visudoconfig="
-# Visudo settings for the battery utility installed from https://github.com/actuallymentor/battery
+# Visudo settings for the battery utility installed from https://github.com/$BATTERY_CLI_FORK/battery
 # intended to be placed in $visudo_file on a mac
 Cmnd_Alias      BATTERYOFF = $binfolder/smc -k CH0B -w 02, $binfolder/smc -k CH0C -w 02, $binfolder/smc -k CH0B -r, $binfolder/smc -k CH0C -r
 Cmnd_Alias      BATTERYON = $binfolder/smc -k CH0B -w 00, $binfolder/smc -k CH0C -w 00
@@ -271,12 +278,12 @@ fi
 
 # Reinstall helper
 if [[ "$action" == "reinstall" ]]; then
-	echo "This will run curl -sS https://raw.githubusercontent.com/actuallymentor/battery/main/setup.sh | bash"
+	echo "This will run curl -sS https://raw.githubusercontent.com/$BATTERY_CLI_FORK/battery/main/setup.sh | bash"
 	if [[ ! "$setting" == "silent" ]]; then
 		echo "Press any key to continue"
 		read
 	fi
-	curl -sS https://raw.githubusercontent.com/actuallymentor/battery/main/setup.sh | bash
+	curl -sS https://raw.githubusercontent.com/$BATTERY_CLI_FORK/battery/main/setup.sh | bash
 	exit 0
 fi
 
@@ -284,15 +291,15 @@ fi
 if [[ "$action" == "update" ]]; then
 
 	# Check if we have the most recent version
-	if curl -sS https://raw.githubusercontent.com/actuallymentor/battery/main/battery.sh | grep -q "$BATTERY_CLI_VERSION"; then
+	if curl -sS https://raw.githubusercontent.com/$BATTERY_CLI_FORK/battery/main/battery.sh | grep -q "$BATTERY_CLI_VERSION_NUMBER"; then
 		echo "No need to update, offline version number $BATTERY_CLI_VERSION matches remote version number"
 	else
-		echo "This will run curl -sS https://raw.githubusercontent.com/actuallymentor/battery/main/update.sh | bash"
+		echo "This will run curl -sS https://raw.githubusercontent.com/$BATTERY_CLI_FORK/battery/main/update.sh | bash"
 		if [[ ! "$setting" == "silent" ]]; then
 			echo "Press any key to continue"
 			read
 		fi
-		curl -sS https://raw.githubusercontent.com/actuallymentor/battery/main/update.sh | bash
+		curl -sS https://raw.githubusercontent.com/$BATTERY_CLI_FORK/battery/main/update.sh | bash
 	fi
 	exit 0
 fi
